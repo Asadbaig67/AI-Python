@@ -1,0 +1,25 @@
+RBFS (node: N, value: F(N), bound: B)
+
+IF f(N)>B, RETURN f(N)
+
+IF N is a goal, EXIT algorithm
+
+IF N has no children, RETURN infinity
+
+FOR each child Ni of N,
+
+  IF f(N)<F(N), F[i] := MAX(F(N),f(Ni))
+
+  ELSE F[i] := f(Ni)
+
+sort Ni and F[i] in increasing order of F[i]
+
+IF only one child, F[2] := infinity
+
+WHILE (F[1] <= B and F[1] < infinity)
+
+  F[1] := RBFS(N1, F[1], MIN(B, F[2]))
+
+  insert Ni and F[1] in sorted order
+
+RETURN F[1]
